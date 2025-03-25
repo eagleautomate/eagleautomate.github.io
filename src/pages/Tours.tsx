@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -66,6 +67,7 @@ const Tours = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [filteredTours, setFilteredTours] = useState(allTours);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -82,6 +84,11 @@ const Tours = () => {
       setFilteredTours(allTours.filter(tour => tour.category === activeCategory));
     }
   }, [activeCategory]);
+
+  // Handle navigating to contact section
+  const handleContactClick = () => {
+    navigate('/', { state: { scrollToContact: true } });
+  };
 
   return (
     <div className="min-h-screen bg-mumbai-cream">
@@ -151,7 +158,10 @@ const Tours = () => {
                   </p>
                   
                   <div className="mt-6">
-                    <button className="btn-black w-full justify-center">
+                    <button 
+                      className="btn-black w-full justify-center"
+                      onClick={handleContactClick}
+                    >
                       Contact Us
                     </button>
                   </div>

@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const tours = [
   {
@@ -34,6 +34,7 @@ const tours = [
 
 const FeaturedTours = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,6 +56,14 @@ const FeaturedTours = () => {
       elements?.forEach(el => observer.unobserve(el));
     };
   }, []);
+
+  // Handle scroll to contact section on homepage
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section ref={sectionRef} className="section-padding bg-mumbai-cream" id="tours">
@@ -106,9 +115,12 @@ const FeaturedTours = () => {
                 </p>
                 
                 <div className="mt-6">
-                  <Link to={`/tours/${tour.id}`} className="btn-black w-full justify-center">
-                    View Tour Details
-                  </Link>
+                  <button 
+                    onClick={scrollToContact}
+                    className="btn-black w-full justify-center"
+                  >
+                    Contact Us
+                  </button>
                 </div>
               </div>
             </div>

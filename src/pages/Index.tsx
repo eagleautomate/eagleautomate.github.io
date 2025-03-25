@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import AboutUs from "../components/AboutUs";
@@ -11,6 +12,7 @@ import Footer from "../components/Footer";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     // Simulate loading assets
@@ -20,6 +22,18 @@ const Index = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  // Handle scrolling to contact section when redirected from another page
+  useEffect(() => {
+    if (location.state?.scrollToContact && !isLoading) {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        setTimeout(() => {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }, 100); // Small delay to ensure the page is fully loaded
+      }
+    }
+  }, [location.state, isLoading]);
 
   if (isLoading) {
     return (
