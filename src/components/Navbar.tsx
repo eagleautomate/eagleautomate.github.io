@@ -20,6 +20,16 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle smooth scroll to contact section
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
+    }
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -51,9 +61,13 @@ const Navbar = () => {
           <Link to="/about" className="text-mumbai-black font-medium hover:text-mumbai-yellow transition-colors">
             About
           </Link>
-          <Link to="/contact" className="btn-primary">
-            Book Now
-          </Link>
+          <a 
+            href="#contact" 
+            onClick={scrollToContact}
+            className="btn-primary"
+          >
+            Contact Us
+          </a>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -104,13 +118,13 @@ const Navbar = () => {
           >
             About
           </Link>
-          <Link 
-            to="/contact" 
+          <a 
+            href="#contact" 
+            onClick={scrollToContact}
             className="btn-primary w-full justify-center mt-2"
-            onClick={() => setIsMobileMenuOpen(false)}
           >
-            Book Now
-          </Link>
+            Contact Us
+          </a>
         </div>
       )}
     </header>

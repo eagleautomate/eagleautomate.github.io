@@ -9,6 +9,15 @@ const Hero = () => {
     setIsLoaded(true);
   }, []);
 
+  // Handle smooth scroll to contact section
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="relative h-screen overflow-hidden">
       {/* Background Image with Animation */}
@@ -53,9 +62,9 @@ const Hero = () => {
               <Link to="/tours" className="btn-primary">
                 Explore Tours
               </Link>
-              <Link to="/about" className="btn-secondary border-white text-white">
-                Learn More
-              </Link>
+              <a href="#contact" onClick={scrollToContact} className="btn-secondary border-white text-white">
+                Contact Us
+              </a>
             </div>
           </div>
         </div>
