@@ -117,7 +117,7 @@ const Tours = () => {
             {filteredTours.map(tour => (
               <div 
                 key={tour.id} 
-                className="bg-white rounded-xl overflow-hidden shadow-md card-hover animate-fade-in"
+                className="bg-white rounded-xl overflow-hidden shadow-md card-hover animate-fade-in flex flex-col"
                 style={{ animationDelay: `${0.05 * tour.id}s` }}
               >
                 <div className="image-container h-60">
@@ -131,7 +131,7 @@ const Tours = () => {
                   </div>
                 </div>
                 
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-grow">
                   <div className="flex justify-between items-start mb-3">
                     <h3 className="text-xl font-semibold">{tour.title}</h3>
                     <div className="text-mumbai-black font-semibold">
@@ -146,13 +146,15 @@ const Tours = () => {
                     <span>{tour.duration}</span>
                   </div>
                   
-                  <p className="text-mumbai-charcoal mb-6">
+                  <p className="text-mumbai-charcoal mb-auto">
                     {tour.description}
                   </p>
                   
-                  <button className="btn-black w-full justify-center">
-                    Book This Tour
-                  </button>
+                  <div className="mt-6">
+                    <button className="btn-black w-full justify-center">
+                      Contact Us
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

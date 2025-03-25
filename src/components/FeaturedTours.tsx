@@ -72,7 +72,7 @@ const FeaturedTours = () => {
           {tours.map((tour, index) => (
             <div 
               key={tour.id}
-              className={`reveal-animation bg-white rounded-xl overflow-hidden shadow-md card-hover`}
+              className={`reveal-animation bg-white rounded-xl overflow-hidden shadow-md card-hover flex flex-col`}
               style={{ animationDelay: `${0.1 * (index + 1)}s` }}
             >
               <div className="image-container h-64">
@@ -86,7 +86,7 @@ const FeaturedTours = () => {
                 </div>
               </div>
               
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <div className="flex justify-between items-start mb-3">
                   <h3 className="text-xl font-semibold">{tour.title}</h3>
                   <div className="text-mumbai-black font-semibold">
@@ -101,13 +101,15 @@ const FeaturedTours = () => {
                   <span>{tour.duration}</span>
                 </div>
                 
-                <p className="text-mumbai-charcoal mb-6">
+                <p className="text-mumbai-charcoal mb-auto">
                   {tour.description}
                 </p>
                 
-                <Link to={`/tours/${tour.id}`} className="btn-black w-full justify-center">
-                  View Tour Details
-                </Link>
+                <div className="mt-6">
+                  <Link to={`/tours/${tour.id}`} className="btn-black w-full justify-center">
+                    View Tour Details
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
