@@ -7,7 +7,7 @@ const blogPosts = [
     id: 1,
     title: "The Hidden History of Colaba",
     excerpt: "Discover the fascinating stories behind one of Mumbai's most iconic neighborhoods, from its colonial past to the present day.",
-    image: "https://source.unsplash.com/nE2HV5AUXFo",
+    image: "https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     author: "Priya Sharma",
     date: "May 15, 2023",
     category: "History",
@@ -17,7 +17,7 @@ const blogPosts = [
     id: 2,
     title: "Mumbai's Street Food Revolution",
     excerpt: "How innovative chefs are reinventing traditional street food, bringing Mumbai's culinary heritage to fine dining and global recognition.",
-    image: "https://source.unsplash.com/6iq2Q_Ipn6Y",
+    image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
     author: "Raj Malhotra",
     date: "April 22, 2023",
     category: "Food",
@@ -27,7 +27,7 @@ const blogPosts = [
     id: 3,
     title: "Monsoon in Mumbai: A Photographer's Guide",
     excerpt: "The best locations and techniques for capturing the dramatic beauty of Mumbai during the rainy season.",
-    image: "https://source.unsplash.com/DMIPWDGN5JE",
+    image: "https://images.unsplash.com/photo-1563448927992-9570402de0a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
     author: "Aditya Patel",
     date: "June 10, 2023",
     category: "Photography",
@@ -104,7 +104,13 @@ const BlogPreview = () => {
                 
                 <div className="flex justify-between items-center mt-4">
                   <div className="flex items-center">
-                    <div className="w-8 h-8 rounded-full bg-gray-300 mr-2"></div>
+                    <div className="w-8 h-8 rounded-full bg-gray-300 mr-2 overflow-hidden">
+                      <img 
+                        src={`https://randomuser.me/api/portraits/${index % 2 === 0 ? 'women' : 'men'}/${20 + index}.jpg`} 
+                        alt={post.author}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <span className="text-sm font-medium">{post.author}</span>
                   </div>
                   

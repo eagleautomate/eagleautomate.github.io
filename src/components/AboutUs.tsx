@@ -87,14 +87,14 @@ const AboutUs = () => {
           <div className="flex flex-col gap-4">
             <div className="reveal-animation-left rounded-2xl overflow-hidden h-48 md:h-64 shadow-lg">
               <img 
-                src="https://source.unsplash.com/ZmFJSQx7Z5w" 
+                src="https://images.unsplash.com/photo-1601619989240-de6f2005941c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
                 alt="Mumbai street food" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="reveal-animation-left rounded-2xl overflow-hidden h-64 md:h-80 shadow-lg">
               <img 
-                src="https://source.unsplash.com/VLg9Yvd2naA" 
+                src="https://images.unsplash.com/photo-1580390730601-539a392697da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2371&q=80" 
                 alt="Mumbai architecture" 
                 className="w-full h-full object-cover"
               />
@@ -103,14 +103,14 @@ const AboutUs = () => {
           <div className="flex flex-col gap-4 pt-8">
             <div className="reveal-animation-right rounded-2xl overflow-hidden h-64 md:h-80 shadow-lg">
               <img 
-                src="https://source.unsplash.com/X35UYHp3Zy4" 
+                src="https://images.unsplash.com/photo-1585231474241-c8340c9b94cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3024&q=80" 
                 alt="Mumbai locals" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="reveal-animation-right rounded-2xl overflow-hidden h-48 md:h-64 shadow-lg">
               <img 
-                src="https://source.unsplash.com/kJXGTOY1wLQ" 
+                src="https://images.unsplash.com/photo-1575485670503-69c30315ed76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80" 
                 alt="Mumbai culture" 
                 className="w-full h-full object-cover"
               />
