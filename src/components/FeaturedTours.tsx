@@ -1,0 +1,126 @@
+
+import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+
+const tours = [
+  {
+    id: 1,
+    title: "Hidden Culinary Gems",
+    duration: "6 hours",
+    image: "https://source.unsplash.com/4HG3Ca3EzWw",
+    price: 149,
+    category: "Food & Culture",
+    description: "Explore Mumbai's secret food spots known only to locals. From street food to family-run eateries that have perfected recipes over generations.",
+  },
+  {
+    id: 2,
+    title: "Art & Architecture Walk",
+    duration: "4 hours",
+    image: "https://source.unsplash.com/QJbyG6O0ick",
+    price: 129,
+    category: "Art & History",
+    description: "Discover the stunning colonial architecture, hidden art galleries, and street art that tells the story of Mumbai's creative evolution.",
+  },
+  {
+    id: 3,
+    title: "Dawn to Dusk Mumbai",
+    duration: "10 hours",
+    image: "https://source.unsplash.com/Qj5U66j83Ro",
+    price: 199,
+    category: "Comprehensive",
+    description: "Experience Mumbai's complete daily transformation from the morning fish markets to the vibrant nightlife districts.",
+  },
+];
+
+const FeaturedTours = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = sectionRef.current?.querySelectorAll('.reveal-animation, .reveal-animation-left, .reveal-animation-right');
+    elements?.forEach(el => observer.observe(el));
+
+    return () => {
+      elements?.forEach(el => observer.unobserve(el));
+    };
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="section-padding bg-mumbai-cream" id="tours">
+      <div className="container-narrow">
+        <div className="text-center mb-16">
+          <h2 className="reveal-animation text-3xl md:text-4xl font-serif font-semibold mb-4 inline-block title-accent">
+            Premium Tour Experiences
+          </h2>
+          <p className="reveal-animation text-mumbai-charcoal max-w-2xl mx-auto mt-8">
+            Handcrafted experiences that blend Mumbai's rich heritage with exclusive access to local gems. Our tours are limited to small groups to ensure personalized attention.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {tours.map((tour, index) => (
+            <div 
+              key={tour.id}
+              className={`reveal-animation bg-white rounded-xl overflow-hidden shadow-md card-hover`}
+              style={{ animationDelay: `${0.1 * (index + 1)}s` }}
+            >
+              <div className="image-container h-64">
+                <img 
+                  src={tour.image}
+                  alt={tour.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-4 left-4 bg-mumbai-yellow text-mumbai-black px-3 py-1 rounded-full text-sm font-medium">
+                  {tour.category}
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-3">
+                  <h3 className="text-xl font-semibold">{tour.title}</h3>
+                  <div className="text-mumbai-black font-semibold">
+                    ${tour.price}
+                  </div>
+                </div>
+                
+                <div className="flex items-center mb-3 text-mumbai-charcoal">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>{tour.duration}</span>
+                </div>
+                
+                <p className="text-mumbai-charcoal mb-6">
+                  {tour.description}
+                </p>
+                
+                <Link to={`/tours/${tour.id}`} className="btn-black w-full justify-center">
+                  View Tour Details
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="text-center mt-12">
+          <Link to="/tours" className="btn-primary">
+            View All Tours
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FeaturedTours;

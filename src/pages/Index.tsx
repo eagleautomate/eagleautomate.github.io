@@ -1,12 +1,50 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import AboutUs from "../components/AboutUs";
+import FeaturedTours from "../components/FeaturedTours";
+import Testimonials from "../components/Testimonials";
+import BlogPreview from "../components/BlogPreview";
+import ContactSection from "../components/ContactSection";
+import Footer from "../components/Footer";
 
 const Index = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading assets
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 bg-mumbai-black flex items-center justify-center z-50">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-mumbai-yellow border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="font-serif text-2xl font-bold tracking-tight">
+            <span className="text-white">Mumbai</span>
+            <span className="text-mumbai-yellow">Local</span>
+          </div>
+        </div>
       </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <Hero />
+      <AboutUs />
+      <FeaturedTours />
+      <Testimonials />
+      <BlogPreview />
+      <ContactSection />
+      <Footer />
     </div>
   );
 };
