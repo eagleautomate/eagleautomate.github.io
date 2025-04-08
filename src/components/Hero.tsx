@@ -53,7 +53,7 @@ const Hero = () => {
               style={{ animationDelay: '0.7s' }}
             >
               Immerse yourself in authentic experiences that go beyond typical tourist spots. 
-              Our premium tours reveal the true essence of Mumbai through history, art, and culture.
+              Our premium tours reveal the true essence of Mumbai through history, art, and culture all curated by locals.
             </p>
             <div 
               className={`pt-4 flex flex-col sm:flex-row gap-4 opacity-0 ${isLoaded ? 'animate-fade-in' : ''}`}
